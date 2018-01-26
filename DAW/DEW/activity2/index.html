@@ -10,6 +10,25 @@
   <body>
     <h1>Activity 2: Change the image</h1>
     <p>Change the following image with changed.png only if changed.png exists in the server</p>
-    <img src="./default.png" alt="just an image">
+    <img id="imagen" src="./default.png" alt="just an image">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+	
+	<script>
+	$.ajax({
+    url:'changed.png',
+   
+    error: function(data){
+        //si no existe el archivo
+		alert('No existe');
+    },
+    success: function(data){
+        //si existe el archivo
+		$('#imagen').attr('src','changed.png');
+		
+		
+    }
+});
+	</script>
   </body>
 </html>

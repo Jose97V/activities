@@ -6,6 +6,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>Activity 3: Forms &amp; click event</title>
+	
+	<style>
+	table {
+		width: 100px;
+		margin-top: 10px;
+	}
+	
+	
+	th, td {
+	width: 25%;
+	}
+	
+	
+	</style>
+	
   </head>
   <body>
     <h1>Activity 3: Forms &amp; click event</h1>
@@ -15,6 +30,51 @@
         <li>Add a table with as many rows and conlumns both Rows and Columns fields indicate</li>
         <li>Each table cell must contain a text like: "Row: X, Col: Y"</li>
       </ol>
-    <img src="./default.png" alt="just an image">
+    
+	<form>
+	ROWS <input type="text" name="filas" id="filas" value=""><br><br>
+	COLUMNS  <input type="text" name="columnas" id="columnas" value="">
+	<br><br><input type="button" name="boton" id="boton" value="GENERATE">
+	</form>
+	
+	<table id="tabla" border="1"></table>
+	
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+
+	<br><br><br>
+	
+	<script>
+	$(document).ready(function(){
+	$("#boton").click(function(){
+		$("#table").remove();
+		var fila = $('#filas').val();
+		var columna = $('#columnas').val()
+	
+	
+		var contador = 1;
+	
+		for(var i=0; i<fila; i++){
+		
+		$("#tabla").append("<tr>");
+		
+			for(var j=0; j<columna; j++){
+				$("#tabla").append("<th>"+contador+"</th>");
+				contador++;
+			}
+		
+		}
+		$("#tabla").append("</tr>");
+		
+		
+	
+	});
+	});
+
+	
+	
+	</script>
+	
   </body>
 </html>
