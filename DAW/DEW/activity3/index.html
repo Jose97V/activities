@@ -54,15 +54,15 @@
 		var columna = $('#columnas').val()
 	
 	
-		var contador = 0;
+		
 	
 		for(var i=0; i<fila; i++){
 		
 		$("#tabla").append("<tr>");
 		
 			for(var j=0; j<columna; j++){
-				$("#tabla").append("<th>"+contador+"</th>");
-				contador++;
+				$("#tabla").append("<th>"+i+","+j+"</th>");
+				
 			}
 		
 		}
