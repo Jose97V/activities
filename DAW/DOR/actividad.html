@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+      
+        <title>Document</title>
+        <style>
+        
+        .transitions{
+           background-color: red;
+           border: 1px solid black;
+           position: relative;
+           overflow: hidden;
+        }
+
+
+        .transitions::before{
+            content: "HOLA MUNDO";
+            display: block;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background-color: orangered;
+            top: -100%;
+            transition: top 1s;
+        }
+
+        .transitions:hover::before{
+            top:0px;
+        }
+        
+        </style>
+
+    </head>
+    <body>
+        <h1>ACTIVITY 5: Transitions</h1>
+
+        <div class="transitions">
+            lo que sea
+        </div>
+
+
+
+
+    </body>
+</html>

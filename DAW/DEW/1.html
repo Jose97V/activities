@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <title>Mover bola en el eje Z con dentro de una caja JS</title>
+    <style type="text/css">
+    /*
+        Definimos los estilos de la pelota y
+        de la caja que la contiene
+    */
+ 
+        #imagen{
+        /*Es importantisimo asignarle a la imagen una posición relativa
+          para que pueda moverse siguiendo el flujo natural del HTML es
+          decir dentro de la caja. Si le ponemos posición absoluta la bola
+          se saldrá del div, y si utilizas posición fixed la bola utilizará
+          toda la ventana del navegador para dar vueltas, por defecto la posición
+          de los elementos es estática lo que quiere decir que no pueden posicionarse
+          por encima de otros elementos sino que van uno detrás de otro.
+        */
+            position:relative;
+            display:block;
+            width:200px;
+        }
+ 
+        #lienzo{
+            width:100%;
+            height:750px;
+            border:1px solid gray;
+            box-shadow:0px 0px 20px gray inset;
+            border-radius:20px;
+            overflow: hidden;
+        }
+        
+ /*Animaciones CSS*/
+        .gira{
+            -moz-animation:rotar 700ms infinite linear;
+            -webkit-animation:rotar 700ms infinite linear;
+        }
+        @-moz-keyframes rotar{
+            from{-moz-transform:rotate(0deg);}
+            to{-moz-transform:rotate(360deg);}
+        }
+        @-webkit-keyframes rotar{
+            from{-webkit-transform:rotate(0deg);}
+            to{-webkit-transform:rotate(360deg);}
+        }
+ 
+    </style>
+    <script type="text/javascript">
+ 
+        //Definimos las variables:
+        var y=0;           
+        var x=0;
+        var controlY=1;  
+        var controlX=1;  
+        var velocidad=1;
+ 
+        // Cada 6 mili-segundos se va a ejecutar la función mover que comprueba
+                // las colisiones de la pelota
+        var intervalo=setInterval("mover()",6);
+ 
+        function mover(){
+            //Eje Y
+            if(controlY==1){ 
+                y+=velocidad;
+            }else{         
+                y-=velocidad;
+            }
+            if(y<=0){
+                controlY=1;
+                y=0;
+            }else if(y>=document.getElementById("lienzo").offsetHeight-200){ 
+// Esto significa si y es mayor o igual a la altura que tiene el lienzo menos el tamaño de la imagen
+ 
+                                controlY=0;
+                y=document.getElementById("lienzo").offsetHeight-200;
+            }
+ 
+            //Eje X
+            if(controlX==1){ 
+                x+=velocidad;
+            }else{         
+                x-=velocidad;
+            }
+            if(x<=0){
+                controlX=1;
+                x=0;
+            }else if(x>=document.getElementById("lienzo").offsetWidth-200){
+                controlX=0;
+                x=document.getElementById("lienzo").offsetWidth-200;
+            }
+            document.getElementById("imagen").style.left=String(x)+"px";
+            document.getElementById("imagen").style.top=String(y)+"px";
+        }
+ 
+        function girar(){
+            document.getElementById("imagen").className="gira";
+        }
+    </script>
+</head>
+<body>
+<h2>Mover elemento en Eje Z</h2>
+<div id="lienzo">
+        <img src="eclipse.png" id="imagen" alt="eclipse"/></div>
+        <input type="button" value="Rotar" id="rotar" onclick="girar();"/>
+</body>
+</html>

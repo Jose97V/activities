@@ -9,8 +9,39 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
     <title>Activity 2: Responsive design</title>
+    <style>
+    .fixed-top {
+    position: unset;
+    top: 0;
+    right: 0;
+    left: 0;
+    margin-top: 25px;
+    }
+    
+    
+    .footer{
+      background-color: grey;
+      width: 100%;
+      margin-top:425px;
+      margin-bottom:0px;
+    }
+
+
+    .col-8{
+      background-color:red;
+      margin-top:0px;
+
+
+    }
+
+
+
+    
+    </style>
+
   </head>
   <body>
+
     <h1>Activity 2: Responsive design</h1>
     <p>The aim of this activity is to build a responsive layout using Bootstrap.
        Write the code under the following paragraph, it must have:
@@ -28,6 +59,47 @@
     </ul>
 
     <!-- Your code here -->
+  
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Option 1 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Option 2</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Option 3</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown01">
+                <a class="dropdown-item" href="#">Option 3.1</a>
+                <a class="dropdown-item" href="#">Option 3.2</a>
+              </div>
+            </li>
+          </ul>
+         
+        </div>
+      </nav>
+
+      <div class="container">
+        <div class="row">
+          <div class="col-8"> First column</div>
+        
+          <div class="col-4" style="background-color: blue">Second column</div>
+       
+        </div>
+         
+      </div>
+
+
+      <footer class="footer">
+          <p>footer</p>
+        </footer>
+
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
