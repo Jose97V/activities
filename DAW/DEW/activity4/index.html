@@ -81,7 +81,7 @@ $(document).ready(function(){
 					
 					break;
 				}else{
-					$('#objeto').finish().animate({"left": "-=70px"}, "fast");
+					$('#objeto').finish().animate({"left": "-=50px"}, "fast");
 					$('#objeto').finish().animate({
 					left: "-=10"
 				});
@@ -96,12 +96,12 @@ $(document).ready(function(){
 				var elemento = $('#objeto');
 				var posicion = elemento.position();
 				
-				if(posicion.left > 600){
+				if(posicion.left > 450){
 					
 				
 					break;
 				}else{
-					$('#objeto').finish().animate({"left": "+=70px"}, "fast");
+					$('#objeto').finish().animate({"left": "+=50px"}, "fast");
 					$('#objeto').finish().animate({
 					left: "+=10"
 				});
@@ -125,44 +125,43 @@ $(document).ready(function(){
 	function CrearBloques(){
 
 	var array = [
-	[{life:1},{life:1},{life:1}],
-	[{life:1},{life:1},{life:1}],
-	[{life:1},{life:1},{life:1}]
+	[{life:1},{life:1},{life:1},{life:1},{life:1},{life:1},{life:1},{life:1}],
+	[{life:1},{life:1},{life:1},{life:1},{life:1},{life:1},{life:1},{life:1}],
+	[{life:1},{life:1},{life:1},{life:1},{life:1},{life:1},{life:1},{life:1}],
+	[{life:1},{life:1},{life:1},{life:1},{life:1},{life:1},{life:1},{life:1}],
+	[{life:1},{life:1},{life:1},{life:1},{life:1},{life:1},{life:1},{life:1}],
+	[{life:1},{life:1},{life:1},{life:1},{life:1},{life:1},{life:1},{life:1}],
+	[{life:1},{life:1},{life:1},{life:1},{life:1},{life:1},{life:1},{life:1}],
+	[{life:1},{life:1},{life:1},{life:1},{life:1},{life:1},{life:1},{life:1}]
 	
 	];
 
 		var contador=1;
 
-	for(var i=0; i<=3; i++){
+	for(var i=0; i<=array.length; i++){
 		$('.blocks_container').append('<div>');
 		
-				
-			for(var j=0; j<8; j++){
+
+			for(var j=0; j<array.length; j++){
 
 				if(i==1){
-					var variable = i + 2;
-					$('.blocks_container').append('<div class="block" style="background-color:red">'+ variable +'</div>');
+				
+					$('.blocks_container').append('<div class="block" style="background-color:red">'+ array[i][j].life +'</div>');
 
 				}
 
 
 				if(i==2){
 					
-					$('.blocks_container').append('<div class="block" style="background-color:orange">'+ i +'</div>');
+					$('.blocks_container').append('<div class="block" style="background-color:orange">'+ array[i][j].life +'</div>');
 
 				}
 
 				if(i==3){
-					var variable = i - 2;
-					$('.blocks_container').append('<div class="block" style="background-color:yellow">'+ variable +'</div>');
+					
+					$('.blocks_container').append('<div class="block" style="background-color:yellow">'+ array[i][j].life +'</div>');
 
 				}
-
-
-
-			
-				
-			
 				
 			}
 		
