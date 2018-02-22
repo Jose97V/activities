@@ -18,6 +18,120 @@
         border-radius: 5px;
       }
     </style>
+    <script>
+    var lista = ['cancion1.mp3','cancion2.mp3','cancion3.mp3'];
+    var audio = document.getElementById('audio');
+    var cancion2 = document.getElementById('cancion2');
+    var cancion3 = document.getElementById('cancion3');
+     function ReproducirAudio(){
+      return audio.play();
+      }
+
+      function Stop(){
+        var audio = new Audio('cancion1.mp3');
+        audio.pause();
+
+      }
+
+var audio;
+var playlist;
+var tracks;
+var current;
+ 
+//llamamos a la función init que creamos más abajo
+init();
+ 
+function init(){
+    actual = 0;
+    audio = $('#audio');
+    playlist = $('#playlist');
+    tracks = playlist.find('li a');
+    len = tracks.length - 1;
+    audio[0].volume = .10;
+    audio[0].play();
+    playlist.find('a').click(function(e){
+        e.preventDefault();
+        link = $(this);
+        actual = link.parent().index();
+        run(link, audio[0]);
+    });
+    audio[0].addEventListener('ended',function(e){
+        actual++;
+        if(current == len){
+            current = 0;
+            link = playlist.find('a')[0];
+        }else{
+            link = playlist.find('a')[current];    
+        }
+        run($(link),audio[0]);
+    });
+}
+function run(link, player){
+        player.src = link.attr('href');
+        par = link.parent();
+        par.addClass('active').siblings().removeClass('active');
+        audio[0].load();
+        audio[0].play();
+}
+
+
+     
+
+
+ /* container = $('.controls');
+	cover = $('.cover');
+	play = $('.play');
+	pause = $('.pause');
+  backward = $('.backward');
+  fordward = $('.forward');
+	song = new Audio('./Cancion.mp3','./Cancion.mp3');
+	duration = song.duration;
+
+if (song.canPlayType('audio/mpeg;')) {
+  	song.type= 'audio/mpeg';
+  	song.src= './Cancion.mp3';
+	} else {
+  	song.type= 'audio/ogg';
+  	song.src= './Cancion.ogg';
+	}
+
+
+$(document).ready(function(){
+  $("#play").click(function(ev){
+    song.play();
+		$(this).replaceWith('<a class="button gradient" id="play" href="" title=""></a>');
+  });
+    });
+
+  play.live('click', function(e) {
+		e.preventDefault();
+		song.play();
+
+		$(this).replaceWith('<a class="button gradient" id="pause" href="" title=""></a>');
+		container.addClass('containerLarge');
+		cover.addClass('coverLarge');
+		$('#close').fadeIn(300);
+		$('#seek').attr('max',song.duration);
+	});
+
+
+$(document).ready(function(){
+  $("#pause").click(function(ev){
+    song.pause();
+		$(this).replaceWith('<a class="button gradient" id="pause" href="" title=""></a>');
+  });
+});
+
+
+  song.addEventListener('timeupdate',function (){
+	curtime = parseInt(song.currentTime, 10);
+		$("#seek").attr("value", curtime);
+	});*/
+
+  
+
+
+    </script>
   </head>
   <body>
     <h1>Activity 5: the audio tag + events</h1>
@@ -29,18 +143,34 @@
     </ul>
 
     <ol>
-      <li>music1.mp3</li>
-      <li>music2.mp3</li>
-      <li>music3.mp3</li>
+      <li>
+        <a href="cancion1.mp3">
+            music1.mp3
+        </a>
+        </li>
+        <li>
+        <a href="cancion2.mp3">
+            music2.mp3
+        </a>
+        </li>
+        <li>
+        <a href="cancion3.mp3">
+             music3.mp3
+        </a>
+        </li>
+
     </ol>
-    <audio>
-     <source src="" type="audio/mpeg">
+    <audio id="audio" preload="auto" tabindex="0" controls="">
+     <source src=".\cancion1.mp3" type="audio/mp3" id="cancion1">
+      <source src=".\cancion2.mp3" type="audio/mp3" id="cancion2">
+      <!--<audio src = "img\Cancion.mp3" autoplay control></audio>-->
      Your browser does not support the audio tag.
     </audio>
     <div class="controls">
-      <div class="play"><i class="fa fa-play"></i></div>
-      <div class="backward"><i class="fa fa-step-backward"></i></div>
-      <div class="fordward"><i class="fa fa-step-forward"></i></div>
+      <div class="play"><i class="fa fa-play" onclick="ReproducirAudio()"></i></div>
+      <div class="pause"><i class="fa fa-stop" onclick="Stop()"></i></div>
+      <div class="backward"><i class="fa fa-step-backward" onclick="Siguiente()"></i></div>
+      <div class="fordward"><i class="fa fa-step-forward" onclick="Anterior()"></i></div>
     </div>
   </body>
 </html>
