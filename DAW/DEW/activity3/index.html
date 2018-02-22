@@ -46,10 +46,14 @@
 
 	<br><br><br>
 	
+	<div id="table"></div>
+
+
 	<script>
 	$(document).ready(function(){
 	$("#boton").click(function(){
-		$("#table").remove();
+		$("#tabla").remove();
+		$("#table").append('<table id="tabla" border="1"></table>');
 		var fila = $('#filas').val();
 		var columna = $('#columnas').val()
 	
